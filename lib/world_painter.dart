@@ -12,13 +12,13 @@ class WorldPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     const cellSize = 3.5;
 
-    final paint = Paint()
-      ..color = Colors.white
-      ..style = PaintingStyle.fill;
-
     for (int i = 0; i < world.length; i++) {
       for (int j = 0; j < world[i].length; j++) {
-        if (world[i][j]) {
+        if (world[i][j].isAlive) {
+          final paint = Paint()
+            ..color = world[i][j].color
+            ..style = PaintingStyle.fill;
+
           canvas.drawRect(
             Rect.fromLTWH(
               i * cellSize,
